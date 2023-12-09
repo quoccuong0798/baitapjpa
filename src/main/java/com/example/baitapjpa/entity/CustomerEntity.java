@@ -1,11 +1,12 @@
 package com.example.baitapjpa.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
 
-@Data
+    @Data
 @Entity(name = "customer")
 public class CustomerEntity {
     @Id
@@ -15,7 +16,9 @@ public class CustomerEntity {
     private String name;
     @Column(name="email")
     private String email;
+
     @OneToMany(mappedBy = "customer")
+    @JsonIgnore
     private List<OrderEntity> orders;
 
 
