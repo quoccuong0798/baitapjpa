@@ -15,7 +15,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping ("/api")
+@RequestMapping("/api")
 public class CustomerController {
     @Autowired
     private CustomerServiceImp customerServiceImp;
@@ -25,16 +25,16 @@ public class CustomerController {
     @PostMapping("/add")
     public ResponseEntity<?> addCustomer(@RequestParam String name, @RequestParam String email) {
         System.out.println("Trước hàm");
-            customerServiceImp.save(name, email);
+        customerServiceImp.save(name, email);
         System.out.println("Có vào không thì bảo");
 
-             return new ResponseEntity<>("Thêm thành công", HttpStatus.OK);
+        return new ResponseEntity<>("Thêm thành công", HttpStatus.OK);
     }
 
     @GetMapping("")
     public ResponseEntity<?> getAllCustomers() {
-            List<CustomerEntity> list = customerRepository.findAll();
-               return new ResponseEntity<>(list, HttpStatus.OK);
+        List<CustomerEntity> list = customerRepository.findAll();
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
     @GetMapping("/id")
@@ -55,4 +55,8 @@ public class CustomerController {
             return new ResponseEntity<>("Không tìm thấy khách hàng", HttpStatus.NOT_FOUND);
         }
     }
+
+
+
+
 }
