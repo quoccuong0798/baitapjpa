@@ -1,5 +1,6 @@
 package com.example.baitapjpa.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -13,6 +14,7 @@ public class OrderEntity {
     private double totalAmount;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "customer_id")
     private CustomerEntity customer;
 }

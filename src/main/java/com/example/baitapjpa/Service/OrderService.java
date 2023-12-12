@@ -8,6 +8,8 @@ import com.example.baitapjpa.entity.OrderEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OrderService implements OrderServiceImp {
     @Autowired
@@ -35,4 +37,16 @@ public class OrderService implements OrderServiceImp {
         return data;
 
     }
+
+    @Override
+    public List<OrderEntity> getOrdersByCustomerId(int customerId) {
+        if (!orderRepository.existsByCustomer_Id(customerId)) {
+            // Xử lý khi customerId không tồn tại
+            throw new IllegalArgumentException("Không tìm thấy id");
+        }
+        return orderRepository.findByCustomer_Id(customerId);
+    }
+
+
+
 }
